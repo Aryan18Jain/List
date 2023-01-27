@@ -54,25 +54,44 @@ int search(int n)
 }
 void insert(int k,int x)
 {
-	if(isempty())
+	if(isempty() || isfull())
 	{
 		cout<<"Cant Insert data";
 		return;
 	}
-    int i;
-    for(i=size-1;i>=k-1;i--)
-    {
-        linear[i+1]=linear[i];
-    }
-    linear[k-1]=x;
-    size++;
+	int i;
+	if(k>=1 && k<=size+1)
+	{
+	    for(i=size-1;i>=k-1;i--)
+	    {
+		linear[i+1]=linear[i];
+	    }
+	    linear[k-1]=x;
+	    size++;
+	}
+	else
+	{
+	    cout<<"Position Wrong"<<endl;
+	}
 }
 void del(int k, int &x)
 {
-    x=linear[k-1];
-    for(int i=k;i<size;i++)
-    linear[i-1]=linear[i];
-    size--;
+    if(isempty())
+    {
+	    cout<<"Cant delete data";
+	    return;
+    }
+    if(k>=1 && k<=size)
+    {
+	    x=linear[k-1];
+	    for(int i=k;i<size;i++)
+	    linear[i-1]=linear[i];
+	    size--;
+    }
+    else
+    {
+	    cout<<"Position Wrong"<<endl;
+    }	
 }
 void display()
 {
