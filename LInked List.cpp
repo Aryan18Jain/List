@@ -98,7 +98,7 @@ int length(node * p)
 int find(node * p,int pos)
 {
 	int len=length(p);
-    if(pos<0 || pos>len)
+    if(pos<1 || pos>len)
     {
         cout<<"Invalid position.";
         return -54321;
@@ -141,7 +141,6 @@ node * insert(node * p,int pos,int x)
             temp->data=x;
             temp->link=p;
             p=temp;
-            len++;
             return p;
         }
         else
@@ -155,7 +154,6 @@ node * insert(node * p,int pos,int x)
             temp->data=x;
             temp->link=q->link;
             q->link=temp;
-            len++;
             return p;
         }
     }
@@ -179,7 +177,6 @@ node * del(node * p, int &x,int pos)
 			p=q->link;
 			x=q->data;
 			delete(q);
-			len--;
 			return p;
 		}
 		else
